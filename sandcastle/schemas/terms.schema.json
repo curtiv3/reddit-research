@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "cluster_terms": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "top_terms": {"type": "array"},
+          "top_bigrams": {"type": "array"}
+        }
+      }
+    }
+  }
+}

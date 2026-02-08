@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "clusters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["cluster_id", "label", "items", "intent_tags", "top_terms", "top_bigrams"],
+        "properties": {
+          "cluster_id": {"type": "string"},
+          "label": {"type": "string"},
+          "items": {"type": "array", "items": {"type": "string"}},
+          "intent_tags": {"type": "array", "items": {"type": "string"}},
+          "top_terms": {"type": "array"},
+          "top_bigrams": {"type": "array"}
+        }
+      }
+    }
+  }
+}

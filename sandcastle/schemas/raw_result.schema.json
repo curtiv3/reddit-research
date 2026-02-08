@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": [
+    "id",
+    "query",
+    "engine",
+    "rank",
+    "source_url",
+    "title",
+    "snippet",
+    "collected_at"
+  ],
+  "properties": {
+    "id": {"type": "string"},
+    "query": {"type": "string"},
+    "engine": {"type": "string"},
+    "rank": {"type": "integer"},
+    "source_url": {"type": "string"},
+    "title": {"type": "string"},
+    "snippet": {"type": "string"},
+    "collected_at": {"type": "string"},
+    "meta": {"type": "object"}
+  }
+}

@@ -1,0 +1,67 @@
+queries:
+  - "focus journal printable"
+  - "deep work planner"
+  - "adhd gratitude journal"
+  - "anxiety shadow work prompts"
+
+engines:
+  - name: "searxng"
+    endpoint: "https://searx.example.com/search"
+    rate_limit_s: 1.5
+    timeout_s: 10
+  - name: "ddg"
+  - name: "brave"
+    api_key: null
+
+outputs:
+  raw_results: "data/raw_results.jsonl"
+  deduped: "data/deduped.json"
+  clusters: "data/clusters.json"
+  terms: "data/terms.json"
+  quality: "data/quality.json"
+  reddit_posts: "data/reddit_posts.jsonl"
+  reddit_intents: "data/reddit_intents.json"
+
+limits:
+  per_query: 40
+  per_engine: 50
+  global_max: 500
+  max_minutes: 10
+  no_new_pages: 2
+
+filters:
+  blocked_domains:
+    - "pinterest.com"
+    - "reddit.com"
+    - "etsy.com"
+
+reddit:
+  windows: ["14d", "60d", "180d", "365d"]
+  queries:
+    - "can't focus" 
+    - "overwhelmed journal"
+    - "planner burnout"
+  filters:
+    min_score: 2
+    min_comments: 1
+    allow_nsfw: false
+    only_posts: true
+    max_pages: 3
+
+clustering:
+  intent_tags:
+    template: "\\btemplate\\b"
+    checklist: "\\bchecklist\\b"
+  clusters:
+    - cluster_id: "focus_journal"
+      label: "Focus Journal / Deep Focus / Concentration"
+      keywords: ["focus", "deep work", "concentration", "attention"]
+    - cluster_id: "gratitude"
+      label: "Gratitude / Positivity"
+      keywords: ["gratitude", "positive", "thankful"]
+    - cluster_id: "shadow_work"
+      label: "Shadow Work"
+      keywords: ["shadow work", "inner child", "healing"]
+    - cluster_id: "adhd_planner"
+      label: "ADHD / Executive Function"
+      keywords: ["adhd", "executive function", "task paralysis"]
