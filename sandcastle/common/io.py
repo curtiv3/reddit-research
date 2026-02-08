@@ -40,14 +40,15 @@ def append_jsonl(path: str | Path, rows: Iterable[dict[str, Any]]) -> None:
 def write_json(path: str | Path, payload: Any) -> None:
     file_path = Path(path)
     file_path.parent.mkdir(parents=True, exist_ok=True)
-    file_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n")
+    with file_path.open("w", encoding="utf-8") as handle:
+        handle.write(json.dumps(payload, ensure_ascii=False, indent=2) + "\n")
 
 
 def read_json(path: str | Path) -> Any:
     file_path = Path(path)
     if not file_path.exists():
         return None
-    return json.loads(file_path.read_text())
+    return json.loads(file_path.read_text(encoding="utf-8"))
 
 
 def count_file(path: str | Path) -> None:
