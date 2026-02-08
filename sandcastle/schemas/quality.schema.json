@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["summary", "issues"],
+  "properties": {
+    "summary": {
+      "type": "object",
+      "required": ["raw_count", "deduped_count", "dedupe_ratio", "top_domains"],
+      "properties": {
+        "raw_count": {"type": "integer"},
+        "deduped_count": {"type": "integer"},
+        "dedupe_ratio": {"type": "number"},
+        "top_domains": {"type": "array"}
+      }
+    },
+    "issues": {"type": "array"}
+  }
+}
